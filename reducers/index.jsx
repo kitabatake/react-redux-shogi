@@ -1,27 +1,32 @@
 import { combineReducers } from 'redux'
 
+import teban from './teban.jsx'
+import komas from './komas.jsx'
+
 // all state
 
 // {
 //   teban: SENTE or GOTE,
-//   sente: {
-//     motigoma: {
-//       {
-//         id: ,
-//         position: ,
-//         type: ,
-//         nari: boolean
-//       }
+//   komas: {
+//     sente: {
+//       motigoma: [
+//         Koma,
+//         ...
+//       ],
+//       banjyou: [
+//         Koma,
+//         ...
+//       ]
 //     },
-//     banjyou: {
-
-//     }
-//   },
-//   gote: {},
+//     gote: {},
+//   }
 
 //   UI STATE
 // }
 
-const reducer = combineReducers({})
+const reducer = combineReducers({
+  teban,
+  komas
+})
 
 export default reducer

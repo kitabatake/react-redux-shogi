@@ -1,6 +1,6 @@
 
 class Koma {
-  constructor() {
+  constructor(position) {
     this.id = null
     this.owner = null // SENTE or GOTE
     this.nari = false
@@ -8,8 +8,8 @@ class Koma {
       x: [false, false, false, false, false, false, false, false, false], // left top to right bottom
       y: [false, false, false, false, false, false, false, false, false]
     }
-    this.nari_movable = movable;
-    this.position = {x: null, y: null}
+    this.nari_movable = this.movable;
+    this.position = position
   }
 
   move(x, y) {
@@ -27,13 +27,13 @@ class Koma {
     var dy = [-1, -1, -1, 0, 0, 0, 1, 1, 1]
     for (let i = 0; i < 9; i++) {
       if (!this.movable.x[i] || !this.movable.y[i]) continue
-      let x = 
-      let y = 
       movable.push({
-        this.position.x + dx[i],
-        this.position.y + dy[i]
+        x:this.position.x + dx[i],
+        y:this.position.y + dy[i]
       })
     }
     return movable
   }
 }
+
+export default Koma
