@@ -6,7 +6,6 @@ class Koma {
   }
   constructor(position) {
     this.id = id_num++
-    console.log(this.id)
     this.owner = null // SENTE or GOTE
     this.nari = false
     this.movable = {

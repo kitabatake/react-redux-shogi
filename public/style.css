@@ -1,0 +1,10 @@
+#ban {
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+}
+
+#ban td {
+  border: 1px solid #ddd;
+  width: 34px;
+  height: 40px;
+}

@@ -1,11 +1,11 @@
 
-const export dispatchInitiateKomas = (dispatch) => {
+export const dispatchInitiateKomas = (dispatch) => {
   dispatch({
     type: 'initiate_komas'
   })
 }
 
-const export dispatchMoveKoma = (dispatch, id, player, x, y) => {
+export const dispatchMoveKoma = (dispatch, id, player, x, y) => {
   dispatch({
     type: 'move_koma',
     id: id,

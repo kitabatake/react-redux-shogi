@@ -1,21 +1,23 @@
-import reducer from './reducers/index.jsx'
+import React from 'react'
+import ReactDOM from 'react-dom'
 import {createStore, applyMiddleware} from 'redux'
+import { Provider } from 'react-redux'
 
-// var initial_state = {
-//   teban: 'sente',
-//   komas: {
-//     sente: {
-//       motigoma: [],
-//       banjyou: []
-//     },
-//     gote: {},
-//   }
-// }
+import {dispatchInitiateKomas} from './actions/komas.jsx'
+import reducer from './reducers/index.jsx'
+import Ban from './components/ban.jsx'
 
-// var tmp = reducer(initial_state, {type: 'hoge'})
-// console.log(tmp)
+var store = createStore(reducer)
 
-// var store = createStore(reducer)
-// store.dispatch({type: 'hoge'})
+const render = () => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <Ban />
+    </Provider>,
+    document.getElementById('container')
+  )
+}
 
-console.log(reducer(undefined, {}))
+render()
+store.subscribe(render)
+dispatchInitiateKomas(store.dispatch)
