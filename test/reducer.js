@@ -18,7 +18,7 @@ describe('initiateKomas action', function() {
         type: 'initiate_komas'
       }
     )
-    expect(state.komas.sente.banjyou.length).to.be.above(0)
+    expect(state.komas.sente.length).to.be.above(0)
   })
 })
 
@@ -40,7 +40,7 @@ describe('move_koma action', () => {
       }
     )
 
-    var komas = state.komas.sente.banjyou.filter(koma => koma.id == 1)
+    var komas = state.komas.sente.filter(koma => koma.id == 1)
     expect(komas.length).to.be(1)
     expect(komas[0].position.x).to.be(1)
     expect(komas[0].position.y).to.be(2)

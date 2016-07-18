@@ -1,16 +1,16 @@
 import Koma from '../komas/index.jsx'
 
 const initiate_komas = (state, actino) => {
-  var sente = {motigoma:[], banjyou: []}
-  sente.banjyou.push(new Koma({x: 3, y: 6}))
+  var sente = []
+  sente.push(new Koma({x: 3, y: 6}))
 
-  var gote = {motigoma:[], banjyou: []}
+  var gote = []
   return {sente: sente, gote: gote}
 }
 
 const move_koma = (state, action) => {
   // move
-  state[action.player].banjyou.forEach(koma => {
+  state[action.player].forEach(koma => {
     if (koma.id == action.id) {
       koma.move(action.x, action.y)
     }

@@ -8,17 +8,8 @@ import komas from './komas.jsx'
 // {
 //   teban: SENTE or GOTE,
 //   komas: {
-//     sente: {
-//       motigoma: [
-//         Koma,
-//         ...
-//       ],
-//       banjyou: [
-//         Koma,
-//         ...
-//       ]
-//     },
-//     gote: {},
+//     sente: []
+//     gote: [],
 //   }
 
 //   UI STATE
