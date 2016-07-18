@@ -1,7 +1,12 @@
+var id_num = 1;
 
 class Koma {
+  static resetIdNum() {
+    id_num = 1;
+  }
   constructor(position) {
-    this.id = null
+    this.id = id_num++
+    console.log(this.id)
     this.owner = null // SENTE or GOTE
     this.nari = false
     this.movable = {

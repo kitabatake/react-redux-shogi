@@ -8,28 +8,11 @@ const initiate_komas = (state, actino) => {
   return {sente: sente, gote: gote}
 }
 
-const sente = (
-  state = {
-    motigoma: [],
-    banjyou: []
-  },
-  action
-) => {
-  switch(action.type) {
-    case 'move':
-      if (action.player != 'sente') return state
-      // TODO move
-      break
-    default:
-      return state
-  }
-}
-
-const move = (state, action) => {
+const move_koma = (state, action) => {
   // move
-  state[action.player].motigoma.forEach(koma => {
+  state[action.player].banjyou.forEach(koma => {
     if (koma.id == action.id) {
-      koma.move(action.position.x, action.position.y)
+      koma.move(action.x, action.y)
     }
   })
 
@@ -45,8 +28,8 @@ const komas = (
   action
 ) => {
   switch(action.type) {
-    case 'move':
-      return move(state, action)
+    case 'move_koma':
+      return move_koma(state, action)
       break
     case 'initiate_komas':
       return initiate_komas(state, action)
