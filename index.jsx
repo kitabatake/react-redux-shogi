@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import {createStore, applyMiddleware} from 'redux'
 import { Provider } from 'react-redux'
 
-import {dispatchInitiateKomas} from './actions/komas.jsx'
+import {initiateKomas} from './actions/komas.jsx'
 import reducer from './reducers/index.jsx'
 import Ban from './components/ban.jsx'
 
@@ -20,4 +20,4 @@ const render = () => {
 
 render()
 store.subscribe(render)
-dispatchInitiateKomas(store.dispatch)
+initiateKomas(store.dispatch)
