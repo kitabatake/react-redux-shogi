@@ -1,6 +1,6 @@
 import expect from 'expect.js'
-import reducer from '../reducers/index.jsx'
-import Koma from '../komas/index.jsx'
+import reducer from '../../reducers/index.jsx'
+import Koma from '../../komas/index.jsx'
 
 describe('default komas state', function() {  
   it('should has only sente, gote property', function() {
