@@ -54,7 +54,6 @@ const stateToProps = (state) => {
 
   if(state.komas.sente) {
     state.komas.sente.forEach(koma => {
-      console.log(koma)
       koma_map[koma.position.y][koma.position.x] = koma
     })
   }
@@ -63,8 +62,6 @@ const stateToProps = (state) => {
   if (state.selected_koma) {
     mode = 'selected_koma'
   }
-
-  console.log(mode)
   
   return {
     koma_map: koma_map,

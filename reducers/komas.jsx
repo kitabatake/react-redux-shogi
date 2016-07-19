@@ -12,7 +12,6 @@ const move_koma = (state, action) => {
   // move
   state[action.player].forEach(koma => {
     if (koma.id == action.id) {
-      console.log('hoge')
       koma.move(action.x, action.y)
     }
   })
