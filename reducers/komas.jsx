@@ -17,8 +17,10 @@ const move_koma = (state, action) => {
     }
   })
 
-  return state
   // toru
+  
+
+  return state
 }
 
 const komas = (

@@ -1,9 +1,20 @@
-var id_num = 1;
+var id_num = 1
+var komas = []
 
 class Koma {
-  static resetIdNum() {
+  static reset() {
     id_num = 1;
+    komas = []
   }
+
+  static getById(id) {
+    var koma
+    komas.forEach(k => {
+      if (k.id == id) koma = k
+    })
+    return koma
+  }
+
   constructor(position, owner) {
     this.id = id_num++
     this.owner = owner // SENTE or GOTE
@@ -14,9 +25,11 @@ class Koma {
     }
     this.nari_movable = this.movable;
     this.position = position
+
+    komas.push(this)
   }
 
-  
+
 
   move(x, y) {
     this.position = {x, y}
