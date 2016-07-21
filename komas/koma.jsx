@@ -32,11 +32,6 @@ class Koma {
     this.id = id_num++
     this.owner = options.owner // SENTE or GOTE
     this.nari = false
-    this.movable = {
-      x: [false, false, false, false, false, false, false, false, false], // left top to right bottom
-      y: [false, false, false, false, false, false, false, false, false]
-    }
-    this.nari_movable = this.movable;
     this.position = options.position
 
     komas.push(this)
@@ -59,6 +54,24 @@ class Koma {
     return this.position != null
   }
 
+  // overrite child class
+  _canMove(x, y) {
+    return false
+  }
+
+  canMove(x, y) {
+    if (x < 0 || x > 8 || y < 0 || y > 8) return false
+
+    var isAllyKoma = false
+    komas.forEach((koma) => {
+      if (koma.x == x && koma.y == y) isAllyKoma = true
+    })
+
+    if (isAllyKoma) return false
+
+    return this._canMove(x, y)
+  }
+
   _render() {}
 
   render() {
@@ -66,21 +79,6 @@ class Koma {
     return (
       <div className={className}>{this._render()}</div>
     )
-  }
-
-  // get movable positions array
-  movalbe() {
-    var movable = []
-    var dx = [-1, 0, 1, -1, 0, 1, -1, 0, 1]
-    var dy = [-1, -1, -1, 0, 0, 0, 1, 1, 1]
-    for (let i = 0; i < 9; i++) {
-      if (!this.movable.x[i] || !this.movable.y[i]) continue
-      movable.push({
-        x:this.position.x + dx[i],
-        y:this.position.y + dy[i]
-      })
-    }
-    return movable
   }
 }
 

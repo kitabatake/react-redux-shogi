@@ -12,3 +12,7 @@
 .gote_koma {
   transform: rotate(180deg);
 }
+
+.movable {
+  background: blue;
+}

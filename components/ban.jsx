@@ -18,7 +18,14 @@ var Ban = React.createClass({
     return trs
   },
   komaToGrid: function(koma, cols, rows) {
-    return <td key={cols} onClick={this.handleGridClick(koma, cols, rows)}>
+    var className = ''
+    if (this.props.mode == 'selected_koma') {
+      if (this.props.selected_koma.canMove(cols, rows)) {
+        className = 'movable'
+      }
+    }
+
+    return <td className={className} key={cols} onClick={this.handleGridClick(koma, cols, rows)}>
       {koma? koma.render() : ''}
     </td>
   },
@@ -30,12 +37,17 @@ var Ban = React.createClass({
         this.props.selectKoma(koma)
     }
   },
+  handleMoveKoma: function( x, y) {
+    return () => {
+      if (this.props.selected_koma.canMove(x, y)) {
+        this.props.moveKoma(this.props.selected_koma, x, y);
+      }
+    }
+  },
   handleGridClick: function(koma, x, y) {
     switch (this.props.mode) {
       case 'selected_koma':
-        return () => {
-          this.props.moveKoma(this.props.selected_koma, x, y);
-        }
+        return this.handleMoveKoma(x, y)
         break
       default:
         return this.handleSelectKoma(koma)

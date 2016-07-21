@@ -7,7 +7,7 @@ const initiate_komas = (state, action) => {
     position: {x: 3, y: 6},
     owner: 'sente'
   }))
-  komas.push(new Kin({
+  komas.push(new Hu({
     position: {x: 0, y: 0},
     owner: 'gote'
   }))
