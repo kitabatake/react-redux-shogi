@@ -19,7 +19,7 @@ var Ban = React.createClass({
   },
   komaToGrid: function(koma, cols, rows) {
     return <td key={cols} onClick={this.handleGridClick(koma, cols, rows)}>
-      {koma? koma.id : ''}
+      {koma? koma.render() : ''}
     </td>
   },
   handleSelectKoma: function(koma) {

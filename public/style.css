@@ -8,3 +8,7 @@
   width: 34px;
   height: 40px;
 }
+
+.gote_koma {
+  transform: rotate(180deg);
+}

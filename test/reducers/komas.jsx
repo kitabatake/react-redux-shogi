@@ -1,6 +1,6 @@
 import expect from 'expect.js'
 import reducer from '../../reducers/index.jsx'
-import Koma from '../../komas/index.jsx'
+import {Koma} from '../../komas/index.jsx'
 
 const initialState = () => {
   Koma.reset()

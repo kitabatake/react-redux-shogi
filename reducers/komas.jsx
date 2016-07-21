@@ -1,13 +1,13 @@
-import Koma from '../komas/index.jsx'
+import {Koma, Hu, Kin} from '../komas/index.jsx'
 
 const initiate_komas = (state, action) => {
 
   var komas = []
-  komas.push(new Koma({
+  komas.push(new Hu({
     position: {x: 3, y: 6},
     owner: 'sente'
   }))
-  komas.push(new Koma({
+  komas.push(new Kin({
     position: {x: 0, y: 0},
     owner: 'gote'
   }))

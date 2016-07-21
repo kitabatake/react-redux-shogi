@@ -1,5 +1,5 @@
 import expect from 'expect.js'
-import Koma from '../../komas/index.jsx'
+import {Koma} from '../../komas/index.jsx'
 
 const reset = () => {
   Koma.reset()
