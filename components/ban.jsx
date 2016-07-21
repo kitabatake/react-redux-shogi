@@ -22,6 +22,15 @@ var Ban = React.createClass({
       {koma? koma.id : ''}
     </td>
   },
+  handleSelectKoma: function(koma) {
+    if (!koma) return
+
+    return () => {
+      console.log(koma)
+      if (koma.owner == this.props.teban)
+        this.props.selectKoma(koma.id)
+    }
+  },
   handleGridClick: function(koma, x, y) {
     switch (this.props.mode) {
       case 'selected_koma':
@@ -30,9 +39,7 @@ var Ban = React.createClass({
         }
         break
       default:
-        if (koma) {
-          return () => this.props.selectKoma(koma.id);
-        }
+        return this.handleSelectKoma(koma)
     }
   },
   render: function() {

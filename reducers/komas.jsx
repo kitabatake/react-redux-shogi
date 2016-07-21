@@ -3,8 +3,8 @@ import Koma from '../komas/index.jsx'
 const initiate_komas = (state, action) => {
 
   var komas = []
-  komas.push(new Koma({x: 3, y: 6}))
-  komas.push(new Koma({x:0, y:0}))
+  komas.push(new Koma({x: 3, y: 6}, 'sente'))
+  komas.push(new Koma({x:0, y:0}, 'gote'))
   
   return komas
 }

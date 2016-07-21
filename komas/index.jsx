@@ -6,7 +6,7 @@ class Koma {
   }
   constructor(position, owner) {
     this.id = id_num++
-    this.owner = null // SENTE or GOTE
+    this.owner = owner // SENTE or GOTE
     this.nari = false
     this.movable = {
       x: [false, false, false, false, false, false, false, false, false], // left top to right bottom
