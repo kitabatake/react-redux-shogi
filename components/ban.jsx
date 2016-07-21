@@ -52,8 +52,8 @@ const stateToProps = (state) => {
   var koma_map = []
   for (let i = 0; i < 9; i++) koma_map[i] = []
 
-  if(state.komas.sente) {
-    state.komas.sente.forEach(koma => {
+  if(state.komas) {
+    state.komas.forEach(koma => {
       koma_map[koma.position.y][koma.position.x] = koma
     })
   }
@@ -66,7 +66,8 @@ const stateToProps = (state) => {
   return {
     koma_map: koma_map,
     mode: mode,
-    selected_koma: state.selected_koma
+    selected_koma: state.selected_koma,
+    teban: state.teban
   }
 }
 
@@ -76,7 +77,7 @@ const stateToDispatch = (dispatch) => {
       selectKoma(dispatch, id)
     },
     moveKoma: function(id, x, y) {
-      moveKoma(dispatch, id, 'sente', x, y)
+      moveKoma(dispatch, id, x, y)
     } 
   }
 }

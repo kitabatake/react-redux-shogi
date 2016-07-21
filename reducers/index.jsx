@@ -8,10 +8,7 @@ import selected_koma from './selected_koma.jsx'
 
 // {
 //   teban: SENTE or GOTE,
-//   komas: {
-//     sente: []
-//     gote: [],
-//   },
+//   komas: [],
 //   selected_koma: null
 // }
 

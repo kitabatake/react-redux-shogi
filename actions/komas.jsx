@@ -5,11 +5,10 @@ export const initiateKomas = (dispatch) => {
   })
 }
 
-export const moveKoma = (dispatch, id, player, x, y) => {
+export const moveKoma = (dispatch, id, x, y) => {
   dispatch({
     type: 'move_koma',
     id: id,
-    player: player,
     x: x,
     y: y
   })

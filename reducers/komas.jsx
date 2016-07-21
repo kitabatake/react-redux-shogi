@@ -1,16 +1,17 @@
 import Koma from '../komas/index.jsx'
 
-const initiate_komas = (state, actino) => {
-  var sente = []
-  sente.push(new Koma({x: 3, y: 6}))
+const initiate_komas = (state, action) => {
 
-  var gote = []
-  return {sente: sente, gote: gote}
+  var komas = []
+  komas.push(new Koma({x: 3, y: 6}))
+  komas.push(new Koma({x:0, y:0}))
+  
+  return komas
 }
 
 const move_koma = (state, action) => {
   // move
-  state[action.player].forEach(koma => {
+  state.forEach(koma => {
     if (koma.id == action.id) {
       koma.move(action.x, action.y)
     }
@@ -21,10 +22,7 @@ const move_koma = (state, action) => {
 }
 
 const komas = (
-  state = {
-    sente: null,
-    gote: null
-  },
+  state = [],
   action
 ) => {
   switch(action.type) {

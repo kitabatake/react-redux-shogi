@@ -4,7 +4,7 @@ class Koma {
   static resetIdNum() {
     id_num = 1;
   }
-  constructor(position) {
+  constructor(position, owner) {
     this.id = id_num++
     this.owner = null // SENTE or GOTE
     this.nari = false
