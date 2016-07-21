@@ -2,6 +2,14 @@ import expect from 'expect.js'
 import reducer from '../../reducers/index.jsx'
 import Koma from '../../komas/index.jsx'
 
+const initialState = () => {
+  Koma.reset()
+  return reducer(
+    reducer(undefined, {}),
+    { type: 'initiate_komas' }
+  )
+}
+
 describe('default komas state', function() {  
   it('should be empty array', function() {
     var default_state = reducer(undefined, {});
@@ -12,24 +20,15 @@ describe('default komas state', function() {
 
 describe('initiateKomas action', function() {
   it('sente has komas', () => {
-    var def = reducer(undefined, {})
-    var state = reducer(
-      def,
-      {
-        type: 'initiate_komas'
-      }
-    )
-    expect(state.komas.length).to.be.above(0)
+    var initiated_state = initialState()
+    expect(initiated_state.komas.length).to.be.above(0)
   })
 })
 
 describe('move_koma action', () => {
   it('specified id koma shoud be moved given position', () => {
-    Koma.reset()
-    var initiated_state = reducer(
-      reducer(undefined, {}),
-      { type: 'initiate_komas' }
-    )
+    
+    var initiated_state = initialState()
 
     var koma = Koma.getById(1)
 

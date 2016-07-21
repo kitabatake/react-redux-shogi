@@ -60,7 +60,9 @@ const stateToProps = (state) => {
 
   if(state.komas) {
     state.komas.forEach(koma => {
-      koma_map[koma.position.y][koma.position.x] = koma
+      if (koma.isBanjyou()) {
+        koma_map[koma.position.y][koma.position.x] = koma
+      }
     })
   }
 

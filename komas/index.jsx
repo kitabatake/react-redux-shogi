@@ -8,9 +8,17 @@ class Koma {
   }
 
   static getById(id) {
-    var koma
+    var koma = null
     komas.forEach(k => {
       if (k.id == id) koma = k
+    })
+    return koma
+  }
+
+  static toreruKoma(x, y) {
+    var koma = null
+    komas.forEach(k => {
+      if (k.position.x == x && k.position.y == y) koma = k
     })
     return koma
   }
@@ -29,7 +37,10 @@ class Koma {
     komas.push(this)
   }
 
-
+  torareru() {
+    this.position = null
+    this.owner = (this.owner == 'sente')? 'gote' : 'sente'
+  }
 
   move(x, y) {
     this.position = {x, y}
@@ -37,6 +48,10 @@ class Koma {
 
   naru() {
     this.naru = true
+  }
+
+  isBanjyou() {
+    return this.position != null
   }
 
   // get movable positions array

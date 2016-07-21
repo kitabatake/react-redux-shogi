@@ -10,15 +10,17 @@ const initiate_komas = (state, action) => {
 }
 
 const move_koma = (state, action) => {
+
+  // toru
+  var toreruKoma = Koma.toreruKoma(action.x, action.y)
+  if (toreruKoma) toreruKoma.torareru()
+
   // move
   state.forEach(koma => {
     if (koma.id == action.koma.id) {
       koma.move(action.x, action.y)
     }
   })
-
-  // toru
-  
 
   return state
 }
