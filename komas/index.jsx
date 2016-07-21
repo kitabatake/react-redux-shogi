@@ -23,16 +23,19 @@ class Koma {
     return koma
   }
 
-  constructor(position, owner) {
+  constructor(options = {
+    position: null,
+    owner: null
+  }) {
     this.id = id_num++
-    this.owner = owner // SENTE or GOTE
+    this.owner = options.owner // SENTE or GOTE
     this.nari = false
     this.movable = {
       x: [false, false, false, false, false, false, false, false, false], // left top to right bottom
       y: [false, false, false, false, false, false, false, false, false]
     }
     this.nari_movable = this.movable;
-    this.position = position
+    this.position = options.position
 
     komas.push(this)
   }
