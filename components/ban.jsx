@@ -26,9 +26,8 @@ var Ban = React.createClass({
     if (!koma) return
 
     return () => {
-      console.log(koma)
       if (koma.owner == this.props.teban)
-        this.props.selectKoma(koma.id)
+        this.props.selectKoma(koma)
     }
   },
   handleGridClick: function(koma, x, y) {
@@ -80,11 +79,11 @@ const stateToProps = (state) => {
 
 const stateToDispatch = (dispatch) => {
   return {
-    selectKoma: function(id) {
-      selectKoma(dispatch, id)
+    selectKoma: function(koma) {
+      selectKoma(dispatch, koma)
     },
-    moveKoma: function(id, x, y) {
-      moveKoma(dispatch, id, x, y)
+    moveKoma: function(koma, x, y) {
+      moveKoma(dispatch, koma, x, y)
     } 
   }
 }

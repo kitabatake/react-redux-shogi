@@ -12,7 +12,7 @@ const initiate_komas = (state, action) => {
 const move_koma = (state, action) => {
   // move
   state.forEach(koma => {
-    if (koma.id == action.id) {
+    if (koma.id == action.koma.id) {
       koma.move(action.x, action.y)
     }
   })

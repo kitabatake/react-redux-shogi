@@ -16,6 +16,8 @@ class Koma {
     this.position = position
   }
 
+  
+
   move(x, y) {
     this.position = {x, y}
   }

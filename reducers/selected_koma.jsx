@@ -1,7 +1,7 @@
 const selected_koma = (state = null, action) => {
   switch(action.type) {
     case 'select_koma':
-      return action.id
+      return action.koma
       break
     default:
       return null

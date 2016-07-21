@@ -5,10 +5,10 @@ export const initiateKomas = (dispatch) => {
   })
 }
 
-export const moveKoma = (dispatch, id, x, y) => {
+export const moveKoma = (dispatch, koma, x, y) => {
   dispatch({
     type: 'move_koma',
-    id: id,
+    koma: koma,
     x: x,
     y: y
   })
