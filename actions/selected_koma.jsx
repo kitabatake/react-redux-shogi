@@ -4,3 +4,9 @@ export const selectKoma = (dispatch, koma) => {
     koma: koma
   })
 }
+
+export const cancelSelectedKoma = (dispatch) => {
+  dispatch({
+    type: 'cancel_selected_koma'
+  })
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { selectKoma } from '../actions/selected_koma.jsx'
+import { selectKoma, cancelSelectedKoma } from '../actions/selected_koma.jsx'
 import { moveKoma } from '../actions/komas.jsx'
 
 var Ban = React.createClass({
@@ -41,6 +41,9 @@ var Ban = React.createClass({
     return () => {
       if (this.props.selected_koma.canMove(x, y)) {
         this.props.moveKoma(this.props.selected_koma, x, y);
+      }
+      else {
+        this.props.cancelSelectedKoma()
       }
     }
   },
@@ -98,7 +101,10 @@ const stateToDispatch = (dispatch) => {
     },
     moveKoma: function(koma, x, y) {
       moveKoma(dispatch, koma, x, y)
-    } 
+    },
+    cancelSelectedKoma: function() {
+      cancelSelectedKoma(dispatch)
+    }
   }
 }
 
