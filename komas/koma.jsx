@@ -64,7 +64,7 @@ class Koma {
 
     var isAllyKoma = false
     komas.forEach((koma) => {
-      if (koma.x == x && koma.y == y) isAllyKoma = true
+      if (koma.owner == this.owner && koma.x == x && koma.y == y) isAllyKoma = true
     })
 
     if (isAllyKoma) return false
