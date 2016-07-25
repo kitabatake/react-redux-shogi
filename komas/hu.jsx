@@ -13,5 +13,6 @@ class Hu extends Koma {
     else ty = this.position.y + 1
     return x == this.position.x && y == ty
   }
+
 }
 export default Hu

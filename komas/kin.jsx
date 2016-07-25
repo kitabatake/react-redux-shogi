@@ -26,5 +26,9 @@ class Kin extends Koma {
 
     return false
   }
+
+  canNareru () {
+    return false
+  }
 }
 export default Kin

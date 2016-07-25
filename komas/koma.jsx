@@ -31,8 +31,9 @@ class Koma {
   }) {
     this.id = id_num++
     this.owner = options.owner // SENTE or GOTE
-    this.nari = false
+    this.narigoma = false
     this.position = options.position
+    this.previousPosition = null
 
     komas.push(this)
   }
@@ -43,11 +44,27 @@ class Koma {
   }
 
   move(x, y) {
+    this.previousPosition = Object.assign({}, this.position)
     this.position = {x, y}
   }
 
+  canNareru() {
+    if (this.narigoma) return false
+
+    var targetNum = this.position.y
+    if (this.owner == 'gote') targetNum = 8 - targetNum
+    if (targetNum < 3) return true
+
+    // narukaeru
+    targetNum = this.previousPosition.y
+    if (this.owner == 'gote') targetNum = 8 - targetNum
+    if (targetNum < 3) return true
+
+    return false
+  }
+
   naru() {
-    this.naru = true
+    this.narigoma = true
   }
 
   isBanjyou() {

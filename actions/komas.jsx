@@ -12,4 +12,8 @@ export const moveKoma = (dispatch, koma, x, y) => {
     x: x,
     y: y
   })
+
+  dispatch({
+    type: 'change_teban'
+  })
 }

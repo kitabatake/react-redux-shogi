@@ -74,3 +74,41 @@ describe('Koma::toreruKoma', () => {
     expect(Koma.toreruKoma(1, 3)).to.be(koma)
   })
 })
+
+describe('Koma#canNareru', () => {
+  beforeEach(() => {
+    reset()
+  })
+
+  it('is narenai situations', () => {
+    var koma = createKoma(5, 5, 'sente')
+    koma.move(5, 4)
+    expect(koma.canNareru()).to.be(false)
+    koma.move(5, 3)
+    expect(koma.canNareru()).to.be(false)
+
+    koma = createKoma(5, 4, 'gote')
+    koma.move(5, 5)
+    expect(koma.canNareru()).to.be(false)
+
+    // if koma already naru, canNareru() return false
+    koma.naru()
+    koma.move(5, 8)
+    expect(koma.canNareru()).to.be(false)
+  })
+
+  it('is nareru situations', () => {
+    var koma = createKoma(5, 3, 'sente')
+    koma.move(5, 2)
+    expect(koma.canNareru()).to.be(true)
+
+    koma = createKoma(5, 2, 'sente')
+    koma.move(4, 8)
+    expect(koma.canNareru()).to.be(true)
+
+    koma = createKoma(5, 3, 'gote')
+    koma.move(3, 6)
+    expect(koma.canNareru()).to.be(true)
+
+  })
+})
