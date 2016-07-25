@@ -3,15 +3,26 @@ import Koma from './koma.jsx'
 
 class Hu extends Koma {
 
-  _render() {
-    return '歩'
+  constructor(options = {
+    position: null,
+    owner: null
+  }) {
+    super(options)
+    this.movement = {
+      num: 1,
+      dx: [0],
+      dy: [-1]
+    }
+
+    this.narigomaMovement = {
+      num: 6,
+      dx: [-1, 0, 1, -1, 1, 0],
+      dy: [-1, -1, -1, 0, 0, 1]
+    }
   }
 
-  _canMove(x, y) {
-    var ty
-    if (this.owner == 'sente') ty = this.position.y - 1
-    else ty = this.position.y + 1
-    return x == this.position.x && y == ty
+  _render() {
+    return this.narigoma? 'と' : '歩'
   }
 
 }

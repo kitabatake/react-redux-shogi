@@ -34,6 +34,8 @@ class Koma {
     this.narigoma = false
     this.position = options.position
     this.previousPosition = null
+    this.movement = null
+    this.narigomaMovement = null
 
     komas.push(this)
   }
@@ -64,6 +66,7 @@ class Koma {
   }
 
   naru() {
+    if (!this.narigomaMovement) return
     this.narigoma = true
   }
 
@@ -71,8 +74,25 @@ class Koma {
     return this.position != null
   }
 
-  // overrite child class
   _canMove(x, y) {
+
+    var movement = this.narigoma? this.narigomaMovement : this.movement
+    
+
+    for (var i = 0; i < movement.num; i++) {
+      let tx = this.position.x + movement.dx[i]
+      let ty
+      if (this.owner == 'sente') {
+        ty = this.position.y + movement.dy[i]
+      }
+      else {
+        ty = this.position.y - movement.dy[i]
+      }
+      
+
+      if (x == tx && y == ty) return true
+    }
+
     return false
   }
 

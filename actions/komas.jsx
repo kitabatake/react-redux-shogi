@@ -1,3 +1,4 @@
+import {changeTeban} from './teban.jsx'
 
 export const initiateKomas = (dispatch) => {
   dispatch({
@@ -13,7 +14,11 @@ export const moveKoma = (dispatch, koma, x, y) => {
     y: y
   })
 
-  dispatch({
-    type: 'change_teban'
-  })
+  if (koma.canNareru()) {
+    if( window.confirm('成りますか?') ) {
+      koma.naru()
+    }
+  }
+
+  changeTeban(dispatch)
 }
