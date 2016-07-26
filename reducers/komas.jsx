@@ -8,7 +8,11 @@ const initiate_komas = (state, action) => {
     owner: 'sente'
   }))
   komas.push(new Kin({
-    position: {x: 0, y: 0},
+    position: {x: 3, y: 2},
+    owner: 'gote'
+  }))
+  komas.push(new Kin({
+    position: {x: 5, y: 2},
     owner: 'gote'
   }))
   

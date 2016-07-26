@@ -16,3 +16,7 @@
 .movable {
   background: blue;
 }
+
+.gote_komadai {
+  transform: rotate(180deg);
+}

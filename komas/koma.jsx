@@ -20,7 +20,7 @@ class Koma {
   static toreruKoma(x, y) {
     var koma = null
     komas.forEach(k => {
-      if (k.position.x == x && k.position.y == y) koma = k
+      if (k.isBanjyou() && k.position.x == x && k.position.y == y) koma = k
     })
     return koma
   }
@@ -42,6 +42,7 @@ class Koma {
 
   torareru() {
     this.position = null
+    this.narigoma = false
     this.owner = (this.owner == 'sente')? 'gote' : 'sente'
   }
 
@@ -75,10 +76,8 @@ class Koma {
   }
 
   _canMove(x, y) {
-
     var movement = this.narigoma? this.narigomaMovement : this.movement
     
-
     for (var i = 0; i < movement.num; i++) {
       let tx = this.position.x + movement.dx[i]
       let ty
@@ -96,15 +95,33 @@ class Koma {
     return false
   }
 
-  canMove(x, y) {
-    if (x < 0 || x > 8 || y < 0 || y > 8) return false
-
-    var isAllyKoma = false
+  isAllyKoma(x, y) {
+    var flag = false
     komas.forEach((koma) => {
-      if (koma.owner == this.owner && koma.x == x && koma.y == y) isAllyKoma = true
+      if (koma.isBanjyou() && koma.owner == this.owner && koma.position.x == x && koma.position.y == y){
+        flag = true
+      } 
     })
+    return flag
+  }
 
-    if (isAllyKoma) return false
+  isEmenyKoma(x, y) {
+    var isEmenyKoma = false
+    komas.forEach((koma) => {
+      if (koma.isBanjyou() && koma.owner != this.owner && koma.position.x == x && koma.position.y == y) isEmenyKoma = true
+    })
+    return isEmenyKoma
+  }
+
+  canMove(x, y) {
+
+    if (x < 0 || x > 8 || y < 0 || y > 8) return false
+    if (this.isAllyKoma(x, y)) return false
+
+    if (!this.isBanjyou()) {
+      if (this.isEmenyKoma(x, y)) return false
+      return true
+    }
 
     return this._canMove(x, y)
   }
