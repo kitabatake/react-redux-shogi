@@ -5,14 +5,14 @@ import { Provider } from 'react-redux'
 
 import {initiateKomas} from './actions/komas.jsx'
 import reducer from './reducers/index.jsx'
-import Ban from './components/ban.jsx'
+import App from './components/app.jsx'
 
 var store = createStore(reducer)
 
 const render = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <Ban />
+      <App />
     </Provider>,
     document.getElementById('container')
   )
