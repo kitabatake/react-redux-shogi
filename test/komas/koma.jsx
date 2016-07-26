@@ -112,3 +112,19 @@ describe('Koma#canNareru', () => {
 
   })
 })
+
+describe('Koma#getMovablePositions', () => {
+  it('simulates hu movable positions', () => {
+    var koma = createKoma(5, 3, 'sente')
+    koma.movement = {
+      num: 1,
+      dx: [0],
+      dy: [-1]
+    }
+
+    var mps = koma.getMovablePositions()
+    expect(mps.length).to.be(1)
+    expect(mps[0].x).to.be(5)
+    expect(mps[0].y).to.be(2)
+  })
+})

@@ -25,6 +25,27 @@ class Koma {
     return koma
   }
 
+  static getMovableMap(owner) {
+    var movableMap = []
+    for (let i = 0; i < 9; i++) {
+      movableMap[i] = []
+      for (let j = 0; j < 9; j++) movableMap[i][j] = true
+    }
+
+    komas.forEach(koma => {
+      if (koma.owner == owner) {
+        movableMap[koma.position.y][koma.position.x] = false
+      }
+      else {
+        koma.getMovablePositions().forEach(position => {
+          movableMap[position.y][position.x] = false
+        })
+      }
+    })
+
+    return movableMap
+  }
+
   constructor(options = {
     position: null,
     owner: null
@@ -67,7 +88,6 @@ class Koma {
   }
 
   naru() {
-    if (!this.narigomaMovement) return
     this.narigoma = true
   }
 
@@ -124,6 +144,25 @@ class Koma {
     }
 
     return this._canMove(x, y)
+  }
+
+  getMovablePositions() {
+    var positions = []
+    var movement = this.narigoma? this.narigomaMovement : this.movement
+    for (var i = 0; i < movement.num; i++) {
+      let tx = this.position.x + movement.dx[i]
+      let ty
+      if (this.owner == 'sente') {
+        ty = this.position.y + movement.dy[i]
+      }
+      else {
+        ty = this.position.y - movement.dy[i]
+      }
+
+      positions.push({x: tx, y: ty})
+    }
+
+    return positions
   }
 
   _render() {}
