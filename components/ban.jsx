@@ -57,7 +57,9 @@ var Ban = React.createClass({
     }
   },
   render: function() {
-  
+    if (this.props.results.finish) {
+      window.alert(this.props.results.winner + 'の勝ち!')
+    }
     return(
       <table id='ban'>
         <tbody>
@@ -90,7 +92,8 @@ const stateToProps = (state) => {
     koma_map: koma_map,
     mode: mode,
     selected_koma: state.selected_koma,
-    teban: state.teban
+    teban: state.teban,
+    results: state.results
   }
 }
 

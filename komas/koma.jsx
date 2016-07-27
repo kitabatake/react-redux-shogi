@@ -73,7 +73,7 @@ class Koma {
   }
 
   canNareru() {
-    if (this.narigoma) return false
+    if (this.narigoma || this.narigomaMovement == null) return false
 
     var targetNum = this.position.y
     if (this.owner == 'gote') targetNum = 8 - targetNum
