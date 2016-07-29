@@ -1,8 +1,6 @@
 import React from 'react';
 import Koma from './koma.jsx'
 
-var ous = {}
-
 class Ou extends Koma {
 
   constructor(options = {
@@ -15,14 +13,6 @@ class Ou extends Koma {
       dx: [-1, 0, 1, -1, 1, -1, 0, 1],
       dy: [-1, -1, -1, 0, 0, 1, 1, 1]
     }
-  }
-
-  static setOu(koma, teban) {
-    ous[teban] = koma
-  }
-
-  static tsumi(teban) {
-    return ous[teban].tsumi()
   }
 
   tsumi() {

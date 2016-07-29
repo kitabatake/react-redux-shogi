@@ -1,7 +1,10 @@
 import React from 'react';
 
+import {Hu, Kin, Ou} from '../komas/index.jsx'
+
 var id_num = 1
 var komas = []
+var ous = {}
 
 class Koma {
   static reset() {
@@ -23,6 +26,35 @@ class Koma {
       if (k.isBanjyou() && k.position.x == x && k.position.y == y) koma = k
     })
     return koma
+  }
+
+  static initiateKomas() {
+    var komas = []
+    komas.push(new Hu({
+      position: {x: 3, y: 2},
+      owner: 'sente'
+    }))
+    komas.push(new Kin({
+      position: {x: 2, y: 2},
+      owner: 'sente'
+    }))
+
+    var goteOu = new Ou({
+      position: {x: 3, y: 0},
+      owner: 'gote'
+    })
+
+    komas.push(goteOu)
+    Koma.setOu(goteOu, 'gote')
+    return komas
+  }
+
+  static setOu(koma, teban) {
+    ous[teban] = koma
+  }
+
+  static tsumi(teban) {
+    return ous[teban].tsumi()
   }
 
   static getMovableMap(owner) {

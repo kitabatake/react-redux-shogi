@@ -1,26 +1,7 @@
 import {Koma, Hu, Kin, Ou} from '../komas/index.jsx'
 
 const initiate_komas = (state, action) => {
-
-  var komas = []
-  komas.push(new Hu({
-    position: {x: 3, y: 2},
-    owner: 'sente'
-  }))
-  komas.push(new Kin({
-    position: {x: 2, y: 2},
-    owner: 'sente'
-  }))
-
-  var goteOu = new Ou({
-    position: {x: 3, y: 0},
-    owner: 'gote'
-  })
-
-  komas.push(goteOu)
-  Ou.setOu(goteOu, 'gote')
-  
-  return komas
+  return Koma.initiateKomas()
 }
 
 const move_koma = (state, action) => {
