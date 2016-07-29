@@ -6,10 +6,12 @@ const reset = () => {
 }
 
 const createKoma = (x = 0, y = 0, owner = 'sente') => {
-  return new Koma({
+  var koma = new Koma({
     position: {x, y},
     owner: owner
   })
+  koma.narigomaMovement = {}
+  return koma
 }
 
 describe('Koma#constructor', () => {
